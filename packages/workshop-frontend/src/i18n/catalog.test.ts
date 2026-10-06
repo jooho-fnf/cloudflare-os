@@ -1,5 +1,3 @@
-import { readdirSync, readFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
 import { describe, expect, it } from 'vitest'
 import en from './en'
 import ko from './ko'
@@ -29,11 +27,11 @@ describe('translation catalogs', () => {
   })
 
   it('defines every statically referenced UI message', () => {
-    const src = fileURLToPath(new URL('../', import.meta.url))
+    const sources = import.meta.glob<string>(['../**/*.{ts,tsx}', '!../i18n/**'], {
+      query: '?raw', import: 'default', eager: true,
+    })
     const missing = new Set<string>()
-    for (const file of readdirSync(src, { recursive: true }) as string[]) {
-      if (!/\.tsx?$/.test(file) || file.startsWith('i18n/')) continue
-      const source = readFileSync(`${src}/${file}`, 'utf8')
+    for (const source of Object.values(sources)) {
       for (const match of source.matchAll(/\bt\(['"]([^'"]+)['"]/g)) {
         if (!(match[1] in english)) missing.add(match[1])
       }

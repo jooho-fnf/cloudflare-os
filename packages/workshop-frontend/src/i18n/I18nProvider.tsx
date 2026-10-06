@@ -7,14 +7,13 @@ import {
   useState,
 } from 'react'
 import type { ReactNode } from 'react'
+import type { Locale, TranslateVars } from './types'
 import {
   LOCALE_STORAGE_KEY,
   applyDocumentLang,
   getLocale,
   setLocale as persistLocale,
   translate,
-  type Locale,
-  type TranslateVars,
 } from './runtime'
 
 interface I18nContextValue {
