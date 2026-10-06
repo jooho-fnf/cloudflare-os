@@ -1,0 +1,27 @@
+{
+  "commit": "0cbd7bc10de5eb1612195301f1247e67548035ed",
+  "browser": "154.0.8037.98",
+  "viewport": {
+    "width": 1440,
+    "height": 1000
+  },
+  "checks": [
+    "Korean browser locale",
+    "English switch",
+    "saved preference survives reload",
+    "language synchronized across tabs",
+    "Korean switch back"
+  ],
+  "pageErrors": [],
+  "automatedChecks": {
+    "frontendTestFiles": 83,
+    "passedTests": 1085,
+    "catalogKeysPerLocale": 1184,
+    "pnpmLint": "passed",
+    "frontendTscUncached": "passed",
+    "productionViteBuildUncached": "passed",
+    "gitDiffCheck": "passed",
+    "node": "24.19.0",
+    "pnpm": "11.17.0"
+  }
+}
