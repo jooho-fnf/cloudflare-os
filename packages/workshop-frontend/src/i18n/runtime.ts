@@ -1,8 +1,6 @@
 import en from './en'
 import ko from './ko'
 import type { Locale, MessageTree, TranslateVars } from './types'
-export type { Locale, MessageTree, TranslateVars } from './types'
-export { LOCALES } from './types'
 
 export const DEFAULT_LOCALE: Locale = 'en'
 export const LOCALE_STORAGE_KEY = 'cfos.locale'
@@ -40,9 +38,6 @@ export function getLocale(): Locale {
   return getBrowserLocale() ?? DEFAULT_LOCALE
 }
 
-/** @deprecated Prefer getLocale() */
-export const readLocale = getLocale
-
 export function setLocale(locale: Locale): void {
   try {
     window.localStorage.setItem(LOCALE_STORAGE_KEY, locale)
@@ -50,9 +45,6 @@ export function setLocale(locale: Locale): void {
     // Ignore; session still applies.
   }
 }
-
-/** @deprecated Prefer setLocale() */
-export const writeLocale = setLocale
 
 export function applyDocumentLang(locale: Locale): void {
   try {
@@ -82,8 +74,4 @@ export function translate(locale: Locale, key: string, vars?: TranslateVars): st
   return raw.replace(/\{(\w+)\}/g, (_, name: string) =>
     vars[name] != null ? String(vars[name]) : `{${name}}`,
   )
-}
-
-export function getCatalog(locale: Locale): MessageTree {
-  return catalogs[locale]
 }

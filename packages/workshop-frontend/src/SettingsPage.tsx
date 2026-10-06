@@ -494,7 +494,6 @@ export default function SettingsPage() {
         </section>
 
 
-        {/* Language */}
         <section className="flex flex-col gap-3">
           <SectionLabel>{t('settings.language')}</SectionLabel>
           <div className="rounded-xl border border-kumo-line bg-kumo-base p-5">

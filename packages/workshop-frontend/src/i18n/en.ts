@@ -1,6 +1,5 @@
 import type { MessageTree } from './types'
 
-/** English source catalog (default keys). */
 const en = {
   common: {
     save: 'Save',
@@ -90,7 +89,6 @@ const en = {
 language: 'Language',
     languageEn: 'English',
     languageKo: '한국어',
-
 
     workspaceActions: 'Workspace actions',
 
@@ -427,7 +425,6 @@ accessFromSources: 'Access from {count} sources',
     joinedThroughLink: 'Joined through a share link',
     copyLinkFailed: 'Could not copy share link.',
 
-
     linkCopiedClipboard: 'Link copied to clipboard.',
     linkCopiedHint: 'Link copied to your clipboard',
     sendThemLink: 'Send them this link to open it',
@@ -482,7 +479,6 @@ bindingName: 'Binding name',
     updateBindingFailed: 'Failed to update binding name',
     removeFailed: 'Failed to remove connection',
     settingsSaved: 'Blueprint settings saved.',
-
 
     connectionName: 'Connection name',
     connectionNameAria: 'Name for {name}',
@@ -570,7 +566,6 @@ outputs: 'Outputs',
     exportLoadFailed: 'Export formats could not be loaded.',
     noExports: 'This Gadget does not support exports.',
     tryAgain: 'Try again',
-
 
     uiTitle: 'Gadget UI',
     resourceConfigurator: 'Resource configurator',
@@ -684,7 +679,6 @@ deleted: 'Deleted',
     slashFoundOne: '{count} slash command found',
     previewUnavailable: "This file can't be previewed here.",
     loadingImage: 'Loading image…',
-
 
     selectAllRows: 'Select all rows',
 },
@@ -1010,7 +1004,6 @@ stackedDiff: 'Stacked diff',
           'Use to write, format, and edit spreadsheets interactively or with natural language.',
       },
     },
-    // Folder-style / alternate ids used by some installs and archive paths.
     'workspace-docs': {
       title: 'Workspace Docs',
       description:

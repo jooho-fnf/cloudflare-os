@@ -60,7 +60,6 @@ export default function ConnectConnectorModal({
 }: ConnectConnectorModalProps) {
   const t = useT()
   const isManage = mode === 'manage'
-  // Localize known vendor label, tagline, and long description; server metadata remains fallback.
   const vendorDisplay = localizeVendorDisplay(t, {
     id: vendorId,
     displayName: vendorDescription.displayName,

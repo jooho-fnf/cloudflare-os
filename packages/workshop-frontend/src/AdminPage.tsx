@@ -450,7 +450,6 @@ export default function AdminPage() {
       />
 
 
-      {/* Interface language (browser-local; not a deployment setting) */}
       {activeTab === 'general' && (
         <div className="bg-kumo-elevated border border-kumo-line rounded-xl p-6">
           <h2 className="text-lg font-semibold text-kumo-strong mb-1">{t('admin.language')}</h2>

@@ -73,7 +73,6 @@ export function useI18n() {
   return context
 }
 
-/** Convenience hook: translator bound to the active locale. */
 export function useT() {
   return useI18n().t
 }

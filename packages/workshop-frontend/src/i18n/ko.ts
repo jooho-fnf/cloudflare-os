@@ -1,6 +1,5 @@
 import type { MessageTree } from './types'
 
-/** Korean UI catalog (존댓말 / 간결한 제품 톤). Product nouns Koreanized for UI labels (워크스페이스, 블루프린트, 출력, 게이트키퍼). */
 const ko = {
   common: {
     save: '저장',
@@ -90,7 +89,6 @@ const ko = {
 language: '언어',
     languageEn: 'English',
     languageKo: '한국어',
-
 
     workspaceActions: '워크스페이스 작업',
 
@@ -423,7 +421,6 @@ accessFromSources: '{count}개 출처의 접근',
     joinedThroughLink: '공유 링크로 참여',
     copyLinkFailed: '공유 링크를 복사하지 못했습니다.',
 
-
     linkCopiedClipboard: '링크가 클립보드에 복사되었습니다.',
     linkCopiedHint: '클립보드에 링크가 복사되었습니다',
     sendThemLink: '이 링크로 열어보라고 보내세요',
@@ -478,7 +475,6 @@ bindingName: '바인딩 이름',
     updateBindingFailed: '바인딩 이름 업데이트에 실패했습니다',
     removeFailed: '연결 제거에 실패했습니다',
     settingsSaved: 'Blueprint 설정을 저장했습니다.',
-
 
     connectionName: '연결 이름',
     connectionNameAria: '{name} 이름',
@@ -566,7 +562,6 @@ outputs: '출력',
     exportLoadFailed: '내보내기 형식을 불러오지 못했습니다.',
     noExports: '이 Gadget은 내보내기를 지원하지 않습니다.',
     tryAgain: '다시 시도',
-
 
     uiTitle: 'Gadget UI',
     resourceConfigurator: '리소스 구성',
@@ -680,7 +675,6 @@ deleted: '삭제됨',
     slashFoundOne: '슬래시 명령 {count}개',
     previewUnavailable: '이 파일은 여기서 미리볼 수 없습니다.',
     loadingImage: '이미지 불러오는 중…',
-
 
     selectAllRows: '모든 행 선택',
 },
@@ -1006,7 +1000,6 @@ stackedDiff: '스택 비교',
           '자연어 또는 대화형으로 스프레드시트를 작성·편집하세요.',
       },
     },
-    // Folder-style / alternate ids used by some installs and archive paths.
     'workspace-docs': {
       title: '워크스페이스 문서',
       description:

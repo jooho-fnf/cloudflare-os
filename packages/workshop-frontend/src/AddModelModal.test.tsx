@@ -2,8 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 
 import { act } from 'react'
-import { createRoot } from './i18n/testRoot'
-import { type Root } from 'react-dom/client'
+import { createRoot, type Root } from './i18n/testRoot'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import type { RpcStub } from 'capnweb'
 import type { AuthenticatedApi, RedactedAiModelConfig } from '@gadgets/workshop-shared/api'

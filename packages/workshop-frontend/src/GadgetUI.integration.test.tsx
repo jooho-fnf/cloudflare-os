@@ -2,8 +2,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 
 import { act, type ReactNode } from 'react'
-import { createRoot } from './i18n/testRoot'
-import { type Root } from 'react-dom/client'
+import { createRoot, type Root } from './i18n/testRoot'
 import { newMessagePortRpcSession, RpcStub, RpcTarget } from 'capnweb'
 import { afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { GadgetClient, UiBundle } from '@gadgets/workshop-shared/api'

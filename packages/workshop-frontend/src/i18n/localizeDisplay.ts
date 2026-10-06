@@ -2,8 +2,7 @@ import type { TranslateVars } from './types'
 
 type TFn = (key: string, vars?: TranslateVars) => string
 
-/** Return catalog value, or fallback when the key is missing from all locales. */
-export function tOr(t: TFn, key: string, fallback: string | undefined | null): string {
+function tOr(t: TFn, key: string, fallback: string | undefined | null): string {
   const value = t(key)
   if (value === key) return fallback ?? ''
   return value
@@ -13,13 +12,7 @@ function slugify(text: string): string {
   return text.trim().toLowerCase().replace(/\s+/g, '_')
 }
 
-/**
- * Localized title/description for known featured/format blueprints.
- * Keys mirror blueprint ids (`format.document` → featuredBlueprints.format.document.*).
- * Also accepts hyphenated folder-style ids (`workspace-docs`) and English title slugs
- * (`Workspace Docs` → byTitle.workspace_docs) so deployments with renamed ids still overlay.
- * Falls back to server metadata.
- */
+/** Localize display metadata without changing stored records or unknown values. */
 export function localizeBlueprintDisplay(
   t: TFn,
   blueprint: { id: string; metadata: { title: string; description?: string | null } },
@@ -28,7 +21,6 @@ export function localizeBlueprintDisplay(
     new Set(
       [
         blueprint.id,
-        // folder-style → dotted format id (workspace-docs → not format.document; keep as key)
         blueprint.id.replaceAll('-', '_'),
       ].filter(Boolean),
     ),
@@ -43,7 +35,6 @@ export function localizeBlueprintDisplay(
     if (byIdTitle && byIdDesc) break
   }
 
-  // Secondary: match well-known English titles (deployments may use different ids).
   const titleSlug = slugify(blueprint.metadata.title)
   const byTitleTitle = byIdTitle || tOr(t, `featuredBlueprints.byTitle.${titleSlug}.title`, '')
   const byTitleDesc = byIdDesc || tOr(t, `featuredBlueprints.byTitle.${titleSlug}.description`, '')
@@ -58,12 +49,6 @@ export function localizeBlueprintDisplay(
   }
 }
 
-/**
- * Localized vendor displayName + tagline + long description by vendor id
- * (`GATEKEEPER_*` suffix, lowercased). Accepts hyphenated ids (`mcp-portal`) and falls back to
- * English `displayName` slug (`byTitle.scheduled_tasks`) when deployments rename binding ids.
- * Falls back to server metadata for unknown vendors.
- */
 export function localizeVendorDisplay(
   t: TFn,
   vendor: {
@@ -102,10 +87,6 @@ export function localizeVendorDisplay(
   }
 }
 
-/**
- * Localized SupportedResource title + description (Connect modal, resource picker).
- * Prefer English title slug (`gmail_mailbox`); unknown / host-specific resources stay as returned.
- */
 export function localizeSupportedResource(
   t: TFn,
   resource: { title: string; description?: string | null; urlPattern?: string },
@@ -119,10 +100,6 @@ export function localizeSupportedResource(
   }
 }
 
-/**
- * Localized format output noun/plural (command palette, create menus, Outputs filters).
- * Prefer output id (`document` / `presentation` / `spreadsheet` / `app`), then English noun match.
- */
 export function localizeFormatOutput(
   t: TFn,
   output: { id?: string; noun: string; plural?: string },
@@ -145,10 +122,7 @@ export function localizeFormatOutput(
   }
 }
 
-/**
- * English vendor product names longest-first, for prefix / exact replacement in account labels.
- * Brand names often stay identical in KO; descriptive defaults (Scheduled Tasks, MCP Server, …) change.
- */
+// Match longer vendor names before their prefixes.
 const VENDOR_EN_PREFIXES: { en: string; id: string }[] = [
   { en: 'Cloudflare MCP Server Portals', id: 'mcp_portal' },
   { en: 'Scheduled Tasks', id: 'scheduler' },
@@ -168,10 +142,7 @@ const VENDOR_EN_PREFIXES: { en: string; id: string }[] = [
   { en: 'Email', id: 'email' },
 ]
 
-/**
- * Localize known English product / connector defaults in an account display label.
- * User-specific names (OAuth profile names, workspace names) stay as-is.
- */
+/** Preserve user-specific suffixes in default connector account labels. */
 export function localizeAccountDisplayName(
   t: TFn,
   name: string | undefined | null,
@@ -188,7 +159,6 @@ export function localizeAccountDisplayName(
     if (trimmed === en) {
       return tOr(t, `vendors.${id}.displayName`, trimmed)
     }
-    // Prefix forms: "GitHub / login", "Google — name", "Slack - workspace"
     const separators = [' — ', ' - ', ' / ', '/ ', ' (', ' · ']
     for (const sep of separators) {
       if (trimmed.startsWith(en + sep)) {
@@ -205,10 +175,6 @@ export function localizeAccountDisplayName(
   return trimmed
 }
 
-/**
- * Localized gatekeeper management-app title (`providesUi.title`) by vendor id.
- * Accepts hyphenated ids and English title slugs as fallbacks.
- */
 export function localizeGatekeeperAppTitle(
   t: TFn,
   app: { id: string; title: string },
